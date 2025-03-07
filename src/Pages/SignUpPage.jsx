@@ -181,7 +181,7 @@ function SignUpPage() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
