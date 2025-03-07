@@ -37,15 +37,15 @@ function SignUpPage() {
 
           // Add user details to Firestore
           // Preparing User Data for Firestore
-        // const userDetails = {
-        //   userName: userName,
-        //   email: email,
-        //   role: role,
-        //   createdAt: serverTimestamp(),
-        // };
+        const userDetails = {
+          userName: userName,
+          email: email,
+          role: role,
+          createdAt: serverTimestamp(),
+        };
 
-          // Store user details in Firestore
-          // await setDoc(doc(db, "users", userCredential.user.uid), userDetails);
+        // Store user details in Firestore
+        await setDoc(doc(db, "users", userCredential.user.uid), userDetails);
         
         console.log("User successfully signed up:");
         toast("Successfully signed up")
