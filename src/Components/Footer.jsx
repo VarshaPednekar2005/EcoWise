@@ -272,7 +272,7 @@ function Footer() {
                           />
                         </g>
                       </svg>
-                      <span className="ml-3 text-xl">Waste Wise Web</span>
+                      <span className="ml-3 text-xl">EcoWise</span>
                     </div>
 
                     <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">

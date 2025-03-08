@@ -240,7 +240,7 @@ function StatsView() {
         <div className="container px-5 py-5 mx-auto">
           <div className="flex flex-col text-center w-full mb-20">
             <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
-              Waste Wise Web's
+              EcoWise
             </h2>
             <h1 className="text-3xl font-bold text-gray-900 sm:text-3xl py-2">
               Statistical Overview

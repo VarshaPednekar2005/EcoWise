@@ -787,7 +787,7 @@ export default function Blogs() {
                     </dl>
 
                     <div className="absolute bottom-0 left-0 right-0">
-                      <span className="inline-flex -space-x-px overflow-hidden rounded-md border bg-white shadow-sm w-full rounded-b-xl border">
+                      <span className="inline-flex -space-x-px overflow-hidden rounded-md bg-white shadow-sm w-full rounded-b-xl border">
                         <button
                           className="inline-block flex-1 px-4 py-2 text-sm font-medium text-gray-700  focus:relative bg-green-500 hover:bg-green-600"
                           onClick={() => approveCampaign(req.id, req.date)}

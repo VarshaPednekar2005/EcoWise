@@ -56,7 +56,7 @@ function Navbar() {
                   className="text-xl text-green-900  hover:text-green-500 italic font-bold"
                   style={{ textDecoration: "none" }}
                 >
-                  BINGO!
+                  EcoWise
                 </span>
               </a>
             </Link>
