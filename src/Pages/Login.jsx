@@ -29,64 +29,41 @@ function Login() {
   };
 
   const auth = getAuth();
-  // const handleLogin = async () => {
-  //   try {
-  //     if (userName.trim() !== "" && password.trim() !== "") {
-  //       // Sign in user with Firebase Authentication
-  //       const userCredential = await signInWithEmailAndPassword(auth, userName, password);
 
-  //       const user = userCredential.user;
-
-  //       // Store user info in localStorage
-  //       localStorage.setItem("username", user.displayName || user.email);
-  //       localStorage.setItem("email", user.email);
-
-  //       toast.success("Successful login", 1000);
-  //       navigate("/");
-  //     } else {
-  //       toast.error("Please enter all the details", 1000);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error during login:", error);
-  //     toast.error("Invalid email or password", 1000);
-  //   }
-  // };
   const handleLogin = async () => {
     try {
       if (userName.trim() !== "" && password.trim() !== "") {
-        // Use the email to retrieve the document based on selected role
+        if (role === "admin") {
+          // Admin login
+          const documentRef = doc(db, "admin", userName);
+          const docSnap = await getDoc(documentRef);
 
-        const documentRef = doc(
-          db,
-          role === "admin" ? "admin" : "users",
-          userName
-        );
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            const dbPass = data.password;
+            const dbEmail = data.email;
 
-        const docSnap = await getDoc(documentRef);
-
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          const dbPass = data.password;
-          const dbEmail = data.email;
-
-          if (dbPass === password) {
-            // Successful login
-            if (role === "admin") {
+            if (dbPass === password) {
               localStorage.setItem("isAdmin", true);
               localStorage.setItem("username", userName);
               localStorage.setItem("email", dbEmail);
+              toast.success("Successful login", 1000);
+              navigate("/");
             } else {
-              localStorage.setItem("isAdmin", false);
-              localStorage.setItem("username", userName);
-              localStorage.setItem("email", dbEmail);
+              toast.error("Invalid email or password", 1000);
             }
-            toast.success("Successful login", 1000);
-            navigate("/");
           } else {
-            toast.error("Invalid email or password", 1000);
+            toast.error("User not found", 1000);
           }
         } else {
-          toast.error("User not found", 1000);
+          // User login
+          const userCredential = await signInWithEmailAndPassword(auth, userName, password);
+          const user = userCredential.user;
+          localStorage.setItem("isAdmin", false);
+          localStorage.setItem("username", user.displayName || user.email);
+          localStorage.setItem("email", user.email);
+          toast.success("Successful login", 1000);
+          navigate("/");
         }
       } else {
         toast.error("Please enter all the details", 1000);
@@ -96,7 +73,6 @@ function Login() {
       toast.error("Error during login. Please check your credentials.", 1000);
     }
   };
-
 
   return (
     <div className="overflow-hidden">
