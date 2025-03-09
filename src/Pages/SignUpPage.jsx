@@ -45,7 +45,7 @@ function SignUpPage() {
         };
 
         // Store user details in Firestore
-        await setDoc(doc(db, "users", userCredential.user.uid), userDetails);
+        await setDoc(doc(db, "users", userName), userDetails);
         
         console.log("User successfully signed up:");
         toast("Successfully signed up")

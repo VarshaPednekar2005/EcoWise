@@ -4,7 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Loader from "../Components/Loader.jsx";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import UserProfile from "../Components/UserDetails.jsx"
+import UserProfile from "../Components/UserDetails.jsx"
 
 export default function UserDetails() {
   const [isEditing, setIsEditing] = useState(false);
@@ -159,7 +159,7 @@ export default function UserDetails() {
               </div>
 
               <div className="mt-3 mx-3 flex items-center justify-center">
-                
+
                 <button
                   className="group relative flex items-center justify-center rounded bg-green-500 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500  mr-4"
                   onClick={logout}

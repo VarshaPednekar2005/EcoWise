@@ -57,13 +57,33 @@ function Login() {
           }
         } else {
           // User login
-          const userCredential = await signInWithEmailAndPassword(auth, userName, password);
-          const user = userCredential.user;
-          localStorage.setItem("isAdmin", false);
-          localStorage.setItem("username", user.displayName || user.email);
-          localStorage.setItem("email", user.email);
-          toast.success("Successful login", 1000);
-          navigate("/");
+          // const userCredential = await signInWithEmailAndPassword(auth, userName, password);
+          // const user = userCredential.user;
+          // localStorage.setItem("isAdmin", false);
+          // localStorage.setItem("username", user.displayName || user.email);
+          // localStorage.setItem("email", user.email);
+          // toast.success("Successful login", 1000);
+          // navigate("/");
+          const documentRef = doc(db, "users", userName);
+          const docSnap = await getDoc(documentRef);
+
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            const dbPass = data.password;
+            const dbEmail = data.email;
+
+            if (dbPass === password) {
+              localStorage.setItem("isAdmin", false);
+              localStorage.setItem("username", userName);
+              localStorage.setItem("email", dbEmail);
+              toast.success("Successful login", 1000);
+              navigate("/");
+            } else {
+              toast.error("Invalid email or password", 1000);
+            }
+          } else {
+            toast.error("User not found", 1000);
+          }
         }
       } else {
         toast.error("Please enter all the details", 1000);
