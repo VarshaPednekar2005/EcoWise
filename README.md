@@ -339,3 +339,66 @@ return (
 );
 // ...existing code...
 ```
+
+## User Profile Functionality
+
+The user profile functionality in WasteWiseWeb allows users to view and manage their personal information, hosted campaigns, blogs, certificates, and upcoming campaigns. Below is a detailed explanation of how each component works:
+
+### UserDetails Component
+
+The `UserDetails` component fetches and displays the user's personal information from the Firestore database. It also provides options for the user to log out and navigate to the feedback page.
+
+- **Fetching User Data**: The component fetches user data based on the username stored in local storage. It checks if the user is an admin or a regular user and fetches data from the respective collection (`admin` or `users`).
+- **Displaying User Data**: The component displays the user's username, name, Aadhar number, date of birth, contact information, state, city, email, and the date the user joined.
+- **Logout Functionality**: The user can log out by clicking the "Logout" button, which removes the username and email from local storage and navigates the user to the home page.
+- **Feedback Navigation**: The user can navigate to the feedback page by clicking the "Feedback" button.
+
+### UserBlogs Component
+
+The `UserBlogs` component fetches and displays the blogs written by the user.
+
+- **Fetching Blogs**: The component fetches blogs from the Firestore database where the email matches the email stored in local storage.
+- **Filtering Blogs**: The user can filter blogs by their approval status (all, approved, not approved).
+- **Displaying Blogs**: The component displays the blogs in a grid format. If no blogs are found, a message is displayed, and the user is prompted to add a new blog.
+
+### UserCampaign Component
+
+The `UserCampaign` component fetches and displays the campaigns hosted by the user.
+
+- **Fetching Campaigns**: The component fetches campaigns from the Firestore database where the user's email matches the email stored in local storage.
+- **Filtering Campaigns**: The user can filter campaigns by their approval status (approved, not approved, all).
+- **Displaying Campaigns**: The component displays the campaigns in a list format. If no campaigns are found, a message is displayed, and the user is prompted to request a new campaign.
+
+### UserCertificates Component
+
+The `UserCertificates` component fetches and displays the certificates earned by the user.
+
+- **Fetching Certificates**: The component fetches the user's certificates from the Firestore database based on the username stored in local storage.
+- **Displaying Certificates**: The component displays a table of certificates with options to download each certificate.
+- **Downloading Certificates**: The user can download a certificate by clicking the "Download" button, which navigates the user to the certificate page with the necessary details.
+
+### UserUpcomingCampaign Component
+
+The `UserUpcomingCampaign` component fetches and displays the upcoming campaigns the user has registered for.
+
+- **Fetching Campaigns**: The component fetches all campaigns from the Firestore database and filters them based on the user's username and upcoming dates.
+- **Displaying Campaigns**: The component displays the upcoming campaigns in a list format. If no upcoming campaigns are found, a message is displayed.
+
+### Local Storage Usage
+
+The application uses local storage to store the user's username and email. This information is used to fetch the user's data from the Firestore database and personalize the user experience.
+
+### Firestore Database Structure
+
+The Firestore database contains the following collections relevant to the user profile functionality:
+
+- `users`: Stores user data for regular users.
+- `admin`: Stores user data for admin users.
+- `blogs`: Stores blog data.
+- `requests`: Stores campaign data.
+
+### Navigation
+
+The application uses React Router for navigation. The user can navigate between different pages such as the user profile, feedback, add blog, request campaign, and certificate pages.
+
+...existing content...

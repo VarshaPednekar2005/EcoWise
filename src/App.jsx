@@ -55,7 +55,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/stats" element={<Stats />} />
+          {/* <Route path="/stats" element={<Stats />} /> */}
           <Route path="/report" element={<Report />} />
           <Route
             path="/guideline"

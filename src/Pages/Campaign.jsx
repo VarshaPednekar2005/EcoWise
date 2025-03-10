@@ -60,7 +60,7 @@ function Campaign() {
         const todayDateString = today.toISOString().split("T")[0];
         const campaignQuery = query(
           collection(getFirestore(), "requests"),
-          where("date", ">", todayDateString),
+          // where("date", ">", todayDateString),
           where("approval", "==", "true")
         );
 
@@ -137,7 +137,7 @@ function Campaign() {
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 ">
           <div className="flex flex-col text-center w-full mb-20">
             <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
-              EcoWise
+              Waste Wise Web's
             </h2>
             <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl py-3">
               Upcoming Campaigns
